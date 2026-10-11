@@ -1,0 +1,47 @@
+{
+  "name": "@bananaworld/print-kit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "THE shared label-printing primitives for the Bananaworld estate (CR-DC-227, packhouse API-CHG-005): the ZPL builder (escaping, canvas, text, rule, native QR), the owner-approved legibility floor and type-fitting metrics, and the print-agent WIRE PROTOCOL (the claimed-job shape and the pure validation of what a depot agent sends). Replaces the copy that lived inside the DC. Pure string building: no database, no socket, no process.env. Each app keeps its own spool, label formats and audit hooks. Shipped as TypeScript source; consumers transpile it via Next.js transpilePackages.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@10.33.2",
+  "files": [
+    "src"
+  ],
+  "exports": {
+    "./zpl/builder": {
+      "types": "./src/zpl/builder.ts",
+      "default": "./src/zpl/builder.ts"
+    },
+    "./zpl/font-metrics": {
+      "types": "./src/zpl/font-metrics.ts",
+      "default": "./src/zpl/font-metrics.ts"
+    },
+    "./agent-protocol": {
+      "types": "./src/agent-protocol.ts",
+      "default": "./src/agent-protocol.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src tests --max-warnings=0",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/node": "^22.10.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-security": "^3.0.1",
+    "prettier": "^3.4.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.60.0",
+    "vitest": "^2.1.8"
+  }
+}
